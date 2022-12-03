@@ -1,0 +1,15 @@
+# FROM node:19-bullseye
+FROM node:latest
+
+WORKDIR /app
+COPY package.json ./
+
+# COPY yarn.lock ./
+COPY yarn.lock ./
+
+RUN npm install
+COPY . .
+
+# CMD ["npm","run","dev"]
+# CMD npm run start
+CMD ["sh","-c", "npm run start"]

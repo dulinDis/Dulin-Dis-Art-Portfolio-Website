@@ -1,0 +1,38 @@
+version: "3"
+services:
+  nginx:
+    restart: always
+    image: "nginx:latest"
+    depends_on:
+      - api
+      - client
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+  api:
+    # container_name: portfolio_api
+    build:
+      context: "./server"
+      # target: production
+      # dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "/app/node_modules"
+      - "./server:/app"
+    environment:
+
+  client:
+    # container_name: portfolio_client
+    stdin_open: true
+    build:
+      context: "./client"
+      # target: production
+      # dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
+    volumes:
+      - "/app/node_modules"
+      - "./client:/app"
+    command: npm run start
+    tty: true
