@@ -1,0 +1,17 @@
+.gallery {
+  @include page-basic-setup
+}
+.gallery-container {
+    display:flex;
+    justify-content: center;
+
+    @include breakpoint(xxl,max) {
+        flex-wrap:wrap;
+    }
+    @include breakpoint(md, max) {
+        flex-direction: column; 
+        align-items: center;
+        flex-wrap:no-wrap;
+    }
+} 
+

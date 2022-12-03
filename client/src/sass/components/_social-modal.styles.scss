@@ -1,0 +1,72 @@
+
+.social-modal-background {
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    top:0;
+    left:0;
+    background: rgba($link-color-hovered,0.8);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .social-modal {
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 30px 10px;
+        position: absolute;
+        left:50%;
+        right:50%;
+        transform: translate(-50%,-50%);
+        min-width:400px;
+        width:30vw;
+        height:200px;
+        background-color: rgba($background-color-dark,1);
+        z-index: 50;
+    
+        @include breakpoint(lg, max){
+            min-width: 60vw;
+    
+        }
+    
+        .copy-link-container {
+    
+            display:flex;
+            justify-content: center;
+            justify-items: center;
+            height:50px;
+            // align-items: baseline;
+
+            .copy-input {
+                width: 50%;
+                height:50px;
+                outline:none;
+            }
+            .copy-button {
+                height:50px;
+
+                border: none;
+                background-color: $font-color-dark;
+                color:$background-color-dark;
+                font-size: 24px;
+                margin: 0;
+            }
+
+         }
+
+    }
+
+    .close-social-modal-button{
+        cursor: pointer;
+        position: absolute;
+        top:12px;
+        right:12px;
+        width: 25px;
+        height: 25px;
+        padding:0;
+        z-index: 10;
+        color:$font-color-dark
+    }
+}

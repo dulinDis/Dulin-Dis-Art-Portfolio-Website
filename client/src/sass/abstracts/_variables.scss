@@ -1,0 +1,30 @@
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1300px,
+  xxl:1700px
+) !default;
+
+
+//bg-img
+
+// $assetPath: '~src/assets/images/';
+$assetPath: '../../assets';
+$bg-img-url: '#{$assetPath}/background/directory-bcg-img.jpg';
+
+
+//colors
+
+$background-color-body:rgb(248, 248, 248); //quaternaryc oor
+$background-color:rgb(240, 240, 240); // background color
+$background-color-dark:rgb(230, 230, 230);
+$backgroud-color-footer: rgb(56,56,56);
+
+$font-color-main:rgb(126, 126, 126);// tertiary color
+$font-color-dark:rgb(54, 54, 54);;// tertiary color
+
+$link-color-normal: rgb(172, 169, 162);
+$link-color-hovered: rgb(95, 93, 90); //secondary color
+
+$error-color: rgb(177, 0, 0)

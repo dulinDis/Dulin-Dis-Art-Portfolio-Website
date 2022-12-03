@@ -1,0 +1,94 @@
+@mixin flex-column {
+    display: flex;
+    flex-direction: column; 
+    flex: 1 0 auto;
+}
+
+@mixin page-basic-setup {
+   @include flex-column;
+    align-items: center;
+    padding:2rem 4rem;
+    background-color:$background-color;
+
+    @include breakpoint(lg, max ) {
+      padding:2rem 1rem;
+    }
+    @include breakpoint(md, max) {
+      padding:2rem 0;
+    }
+}
+
+@mixin title-centre {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  text-align:center;
+  width:100%;
+  padding:0 15px;
+  z-index: 2;
+  opacity:0;
+  transition: 0.15 ease;
+
+
+}
+
+@mixin cover {
+  height:100%;
+  width: 100%;
+  position:absolute;
+  top:0;
+  left:0;           
+  background-color: rgb(56,56,56);
+  z-index: 1;
+  // display: none;
+  opacity:0;
+  transition: opacity 0.2s ease;
+}
+
+@mixin image-default {
+  width: 100%;
+  height: auto;
+  object-fit:cover;
+  display: block;      
+}
+@mixin text-uppercase-spacing {
+  text-align:center;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing: 2px;
+}
+
+@mixin breakpoint($breakpoint, $direction) {
+    @if map-has-key($breakpoints, $breakpoint) {
+  
+      // Get the breakpoint value.
+      $breakpoint-value: map-get($breakpoints, $breakpoint);
+      
+      @if $direction == max {
+        @media (max-width: ($breakpoint-value - 1)) {
+          @content;
+        }
+      } @else if $direction == min {      
+        @media (min-width: $breakpoint-value) {
+          @content;
+        }
+      } 
+    
+    // If the breakpoint doesn't exist in the map.
+    } @else {
+      @if $direction == max {
+        @media (max-width: $breakpoint) {
+          @content;
+        }
+      } @else if $direction == min {      
+        @media (min-width: $breakpoint) {
+          @content;
+        } 
+      }  @else {
+        @media ($direction: $breakpoint) {
+          @content
+        }
+    }
+    }
+}

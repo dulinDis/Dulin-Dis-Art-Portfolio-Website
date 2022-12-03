@@ -1,0 +1,62 @@
+
+.home-page {
+    @include page-basic-setup ;
+    align-items: flex-start;
+    height:100%;
+    // flex-grow:1;
+    background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.428) 30%,rgba(255, 255, 255, 0.034) 50%, rgba(255, 255, 255, 0) 80%), 
+    // url(${Background}); 
+    url('../../assets/background/directory-bcg-img.jpg');
+    background-position: center;
+    background-size: cover;
+    filter: brightness(.9);
+    transition: filter 0.4s ease;
+    position: relative;
+
+   &:hover {
+        filter: brightness(1);
+    }
+
+
+  @include breakpoint(md,max) {
+    filter: brightness(1);
+}
+
+@include breakpoint(xl,max) {
+    padding:30px 50px;
+}
+.left {
+    align-self: flex-start;
+    margin: 2vh 0 0 4vw;
+}
+
+}
+.logo-title {
+    position: absolute;
+    left:15%;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    width: 35%;
+    opacity:0.1
+ }
+
+
+ .homepage-title {
+    opacity:0.2;
+    font-family: 'Playfair Display', serif;
+    text-transform: capitalize;
+    letter-spacing: 4px;
+    font-size: 60px;
+    user-select:none
+}
+.sign-container {
+    width:20vw;
+    @include breakpoint(xl,max) {
+        width:40vw;
+    }
+}
+.sign {
+    opacity: 0.8;
+    // color:$link-color-normal
+}

@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  // height: 100vh;
+  //reviousy heigh 100vh
+  height: 100%;
+  text-align: center;
+  background-color: $background-color-body;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 76vh;
+  background-color: $background-color;
+  overflow-y: overlay;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: default;
+  transition: 0.1s ease;
+  letter-spacing: 3px;
+}
+
+a:hover {
+  color: $link-color-hovered;
+}
+
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+  color: $link-color-normal;
+}
+
+.component-container {
+  display: flex;
+  flex-grow: 1;
+  padding: 0 8vw;
+  justify-content: space-between;
+}
+
+img {
+  @include image-default;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $background-color-dark inset !important;
+}

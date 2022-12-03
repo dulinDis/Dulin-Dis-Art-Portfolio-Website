@@ -1,0 +1,23 @@
+footer {
+  height: 6vh;
+  @include flex-column;
+  justify-content: space-between;
+
+  background-color: $backgroud-color-footer;
+  color: $background-color;
+  a {
+    color: $background-color;
+  }
+
+  p,
+  .socials {
+    @include flex-column;
+    flex-grow: 0;
+    justify-content: center;
+  }
+
+  .instagram {
+    height: 15px;
+    width: 15px;
+  }
+}

@@ -1,0 +1,46 @@
+// Abstract files
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+
+// Vendor Files
+// @import "vendor/all";
+
+// Core files
+@import "./core/base";
+@import "./core/reset";
+@import "./core/typography";
+@import "./core/custom-scroll";
+@import "./core/error-boundary";
+
+
+// Components
+@import "components/burger";
+@import "components/artwork-preview-element.styles";
+@import "components/collection-overview.styles";
+@import "components/button";
+@import "components/collection-preview-element";
+@import "components/artwork-modal";
+@import "components/social-modal.styles";
+@import "components/social-follow.styles";
+
+
+// Layout
+@import "layout/header.scss";
+@import "layout/loader-wrapper";
+@import "layout/loader";
+
+@import "layout/masonry-grid";
+@import "layout/forms";
+@import "layout/footer";
+@import "layout/form-input";
+@import "./layout/fallback-loader";
+
+// Sections
+// @import "sections/all";
+
+// Pages
+@import "./pages/home-page";
+@import "./pages/about-page";
+@import "./pages/contact-page";
+@import "./pages/gallery-page";
+@import "./pages/artwork-page"

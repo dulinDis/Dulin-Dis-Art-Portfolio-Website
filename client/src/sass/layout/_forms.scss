@@ -1,0 +1,34 @@
+
+.form-container {
+    @include flex-column;
+    margin: 5px auto 30px;
+
+    @include breakpoint(xl, max) {
+        margin: 15px auto 30px;
+
+    }
+
+    .form {
+        @include flex-column;
+        width:20vw;
+        
+        @include breakpoint(xxl,max) {
+            width:35vw;
+        }
+        @include breakpoint(xl,max) {
+            width:45vw;
+        }
+        @include breakpoint(lg,max) {
+            width:50vw;
+        }
+        @include breakpoint(md,max) {
+            width:70vw;
+        }
+
+
+        .submit-btn {
+            align-self:center
+        }
+    }
+
+}

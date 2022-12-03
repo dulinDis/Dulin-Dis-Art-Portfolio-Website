@@ -1,0 +1,169 @@
+.input-field {
+    margin-bottom:25px;
+    position: relative;
+ 
+    @include breakpoint(xl, max){
+        margin-bottom:30px;
+    }
+
+    input, textarea {
+        width: 100%;
+        border:none;
+        border:0;
+        padding:10px 30px;
+        color:$font-color-main;
+        background-color: rgba($background-color-dark,0.8);
+        border-bottom: 1px solid $link-color-hovered;
+        outline:none;
+        text-align:center;
+        font-size: 14px;
+        @include breakpoint(sm,md) {
+            font-size: 18px;
+        }
+    }
+
+    .form-control {
+        border-bottom:  $link-color-hovered;
+        border:0;
+        font-size: 14px;
+        @include breakpoint(md,max) {
+            font-size: 18px;
+        }
+    }
+
+    .form-control ~ .focus-border {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        width: 0;
+        height: 1px;
+        background-color:  $link-color-hovered;
+        transition: 0.4s;
+    }
+
+    .form-control:focus ~ .focus-border {
+        width:100%;
+        transition: 0.4s;
+        left:0;
+    }
+
+    .form-control:invalid{
+        border-bottom: 1px solid $error-color;
+        background-color:  rgba($error-color, 0.1);
+
+        // border:0;
+        // width:100%;
+    }
+    
+    .form-control:valid {
+        border-bottom: none;
+
+    }
+
+    .form-control:invalid[focused="false"] ~ .focus-border {
+        // border-bottom:  $error-color;
+        position:absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+
+        height: 1px;
+        background-color: $error-color;
+        // transition: 0.4s;
+    };
+
+    .form-control:invalid[focused="true"] ~ .focus-border {
+        position:absolute;
+        bottom:0;
+        left:50%;
+        width: 0;
+        height: 1px;
+        background-color: $error-color;
+        transition: 0.4s;
+    }
+
+    .form-control:invalid[focused="true"]:focus ~ .focus-border {
+        width:100%;
+        transition: 0.4s;
+        left:0;
+    }
+
+
+    .textfield {
+        min-height:15vh;
+        font-size: 14px;
+        resize: none;
+        justify-content: left;
+        text-align: start;
+        overflow-wrap: break-word;   
+        border: none;
+        outline: none;
+        @include breakpoint(md,max) {
+            font-size: 18px;
+        }
+    }
+
+    input::placeholder, textarea::placeholder {
+        color:$link-color-normal;        
+        font-size: 12px;
+        @include breakpoint(md,max) {
+            font-size: 16px;
+        }
+    }
+
+    .textfield::placeholder{
+        position:absolute;
+        top:15px;
+        font-size: 12px;
+        @include breakpoint(sm,md) {
+            font-size: 16px;
+        }
+    }
+
+    .textfield + .focus-border {
+        bottom:5px;
+    }
+    
+    .error-message{
+        position:absolute;
+        left:50%;
+        bottom:-22px;
+        transform:translateX(-50%);
+        font-size: 12px;
+        padding: 3px 0;
+        color: $error-color;
+        visibility: hidden;
+        text-align: center;
+
+        @include breakpoint(md,max) {
+            font-size: 13px;
+        }
+    }
+
+    input:focus + label,   textarea:focus + label{
+        visibility: hidden;
+    };
+
+    input:invalid[focused="true"] ~ .error-message{
+        visibility: visible;
+    }
+
+        /* Change Autocomplete styles in Chrome*/
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus
+    input:-webkit-autofill, 
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+    -webkit-text-fill-color: $font-color-main;
+    }
+
+    
+}
+
+
+

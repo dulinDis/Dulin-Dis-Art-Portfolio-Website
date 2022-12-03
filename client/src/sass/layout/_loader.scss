@@ -1,0 +1,46 @@
+.loader-bg {
+    height:100%;
+    width:100%;
+    z-index:10;
+    background-color: transparent;
+    visibility: visible;
+    animation: bgFadeOut 0.2s ease;
+}
+
+.loader {
+    min-width: 100px;
+    max-width:200px;
+    padding:100px 50px;
+    animation:logoFadeIn 3s ease forwards;
+    animation-iteration-count: infinite;
+    z-index:20
+}
+
+
+@keyframes logoFadeIn {
+    0% {
+      opacity: 0;
+    }
+    70% {
+        opacity: 1;
+
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+  @keyframes bgFadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+
+      }
+
+      100% {
+          opacity: 0;
+          visibility: hidden;
+
+      }  
+  }
+
+

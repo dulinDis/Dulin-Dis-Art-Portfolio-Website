@@ -1,0 +1,92 @@
+@font-face {
+    font-family: "Playfair Display";
+    src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap');
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap')
+}
+
+body {
+    font-family: 'Open Sans', serif;
+    color:$font-color-main;
+}
+
+.link-active {
+    color: red
+}
+
+h1,h2,h3,h4,h5 {
+    color: $link-color-hovered;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 2px;
+}
+
+
+h2 {
+    font-weight: 500;
+    margin: 10px auto 30px;
+    font-size: 40px;
+    text-transform: uppercase;
+    @include breakpoint(xl, max){
+        font-size: 42px;
+        margin: 10px auto 25px;
+
+     }
+     @include breakpoint(lg, max){
+        font-size: 45px;
+        margin: 5px auto 15px;
+
+     }
+}
+
+h3 {
+    font-size: 30px;
+
+    @include breakpoint(xl, max){
+        font-size: 28px;
+     }
+     @include breakpoint(lg, max){
+        font-size: 24px;
+     }
+}
+
+textarea, input {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+
+    @include breakpoint(lg, max) {
+        font-size: 14px;
+    }
+}
+input::placeholder, textarea::placeholder {
+    color: transparent;
+}
+
+footer, button {
+    @include text-uppercase-spacing 
+}
+
+
+.quote {
+    font-size: 16px;
+    font-style: italic;
+  }
+.right {
+    text-align: right;
+}
+// // ::placeholder {
+// //     font-family:"Playfair Display",sans-serif;
+// //     text-transform: uppercase;
+// //     letter-spacing: 2px;
+// //     font-size: 10px;
+// //     color: $font-color-main;
+// //     position:absolute;
+// //     // transform: ;
+
+// //     @include breakpoint(xl,max) {
+// //         font-size: 12px;
+
+// //     }
+// // }
