@@ -6,11 +6,12 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const path = require("path");
 const compression = require("compression");
+require("dotenv").config();
 
 const artworkRoutes = require("./routes/artwork-routes");
 const contactRoutes = require("./routes/contact-routes.jsx");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 // const HOST = process.env.HOST  || 127.0.0.1;
 
 const app = express();

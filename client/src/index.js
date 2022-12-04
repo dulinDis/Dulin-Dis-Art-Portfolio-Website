@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
+import axiosInstance from './apiClient';
 
 
 ReactDOM.render(
@@ -17,7 +18,11 @@ ReactDOM.render(
       // loading={null} 
       persistor={persistor}
       >
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/"
+        // {"/"
+        //   // axiosInstance.basename || null
+        //   }
+          >
           <App />
         </BrowserRouter>
         {/* <AppFirestore/> */}

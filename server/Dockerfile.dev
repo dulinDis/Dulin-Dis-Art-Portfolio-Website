@@ -1,6 +1,12 @@
 # FROM node:19-bullseye
 FROM node:latest
 
+ENV NODE_ENV=development
+
+
+LABEL version="1.0"
+LABEL description="Development image for the Portfolio api"
+
 WORKDIR /app
 COPY package.json ./
 
@@ -10,6 +16,8 @@ COPY yarn.lock ./
 RUN npm install
 COPY . .
 
+EXPOSE 5000
+
 # CMD ["npm","run","dev"]
 # CMD npm run start
-CMD ["sh","-c", "npm run start"]
+CMD ["sh","-c", "npm run dev"]
