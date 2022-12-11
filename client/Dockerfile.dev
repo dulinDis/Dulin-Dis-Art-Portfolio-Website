@@ -1,12 +1,12 @@
 FROM node:19-bullseye
 
-LABEL version="1.0"
+# LABEL version="1.0"
 LABEL description="React Frontent for portfolio page"
 
 # FROM node:alpine
 WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
+COPY ./package.json ./
+COPY ./yarn.lock ./
 RUN npm install
 COPY . .
 CMD ["sh","-c", "npm run start"]
@@ -24,7 +24,7 @@ CMD ["sh","-c", "npm run start"]
 
 # FROM node:19-bullseye
 # WORKDIR /app
-# COPY ./package.json ./
+# COPY package.json ./
 # COPY yarn.lock ./
 # RUN npm i
 # COPY . .

@@ -7,6 +7,7 @@ import {
   fetchGalleryRequest,
   fetchGallerySuccess,
 } from "./gallery.actions";
+import { axiosInstance } from "../../config";
 
 export const fetchGalleryAsync = () => async (dispatch) => {
   dispatch(fetchGalleryRequest());

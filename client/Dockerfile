@@ -1,12 +1,12 @@
 FROM node:19-bullseye AS builder
 
-LABEL version="1.0"
+# LABEL version="1.0"
 LABEL description="React Frontent for portfolio page"
 # FROM node:alpine
 # ENV NODE_ENV=production
 WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
+COPY ./package.json ./
+COPY ./yarn.lock ./
 RUN npm install
 COPY . .
 RUN npm run build
@@ -27,7 +27,7 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # FROM node:19-bullseye as builder
 # # WORKDIR /app
 # WORKDIR /portfolio/src/client
-# COPY ./package.json ./
+# COPY package.json ./
 # RUN npm i
 # COPY . .
 # RUN npm run build

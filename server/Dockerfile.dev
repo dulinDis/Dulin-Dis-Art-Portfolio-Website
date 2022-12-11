@@ -3,8 +3,7 @@ FROM node:latest
 
 ENV NODE_ENV=development
 
-
-LABEL version="1.0"
+# LABEL version="1.0"
 LABEL description="Development image for the Portfolio api"
 
 WORKDIR /app
@@ -13,7 +12,9 @@ COPY package.json ./
 # COPY yarn.lock ./
 COPY yarn.lock ./
 
-RUN npm install
+# RUN npm install
+RUN npm install && npm cache clean --force
+
 COPY . .
 
 EXPOSE 5000
