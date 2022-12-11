@@ -5,6 +5,7 @@
     align-items: space-between;
     letter-spacing: 5px;
     overflow-x:hidden;
+    // overflow:hidden;
 
 
  .logo {
@@ -51,8 +52,6 @@
       top:18vh;
       background-color:$background-color-body;
       color: $backgroud-color-footer;
-
-
 
       flex-direction: column;
       align-items: center;

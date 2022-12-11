@@ -1,20 +1,22 @@
-* {
-  box-sizing: border-box;
+html,
+body {
   margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: hidden;
 }
 
-body {
+.App {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  // height: 100vh;
-  //reviousy heigh 100vh
-  height: 100%;
   text-align: center;
   background-color: $background-color-body;
+  scroll-behavior: smooth;
 }
 
 .wrapper {
