@@ -23,6 +23,7 @@ const ArtworkComponent = lazy(() =>
 
 function App() {
   const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setLoading(false), 3000);

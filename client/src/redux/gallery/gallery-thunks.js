@@ -7,13 +7,13 @@ import {
   fetchGalleryRequest,
   fetchGallerySuccess,
 } from "./gallery.actions";
-import { axiosInstance } from "../../config";
+import { axiosInstance } from "../../axiosConfig";
 
 export const fetchGalleryAsync = () => async (dispatch) => {
   dispatch(fetchGalleryRequest());
   try {
     const galleryData = await axios.get(`/api/artwork`);
-    // const galleryData = await axios.get(`${configs[process.env.NODE_ENV]}/api/artwork`);
+   // const galleryData = await axios.get(`${process.env.NODE_ENV}/api/artwork`);
     const convertedData = await convertGallery(galleryData.data);
     dispatch(fetchGallerySuccess(convertedData));
   } catch (error) {
