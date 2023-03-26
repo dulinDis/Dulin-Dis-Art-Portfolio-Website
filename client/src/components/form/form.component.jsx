@@ -4,8 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 // import { axiosInstance } from "../../config.js";
-import axios from "axios";
-
+import axios from "../../axiosConfig";
 
 function Form() {
   const [state, setState] = useState({
@@ -39,10 +38,6 @@ function Form() {
       }
 
       const reply = await axios.post(`/api/send`, { ...state });
-      // console.log({
-      //   axiosInstanceSERVER_URI: axiosInstance,
-      //   nodeEnv: process.env.NODE_ENV,
-      // });
 
       if (reply.data.sent === false) {
         throw "message not sent";

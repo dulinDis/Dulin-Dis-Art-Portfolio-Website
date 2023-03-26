@@ -1,10 +1,5 @@
-// import axios from "axios";
-// export const configs = {
-//   development: `${process.env.REACT_APP_API_URL}`,
-//   production: `${process.env.REACT_APP_API_URL}`,
-//   // TODO:put final url
-// };
+import axios from "axios";
 
-// export const axiosInstance = axios.create({
-//   baseURL: configs[process.env.NODE_ENV],
-// });
+export default axios.create({
+  baseURL: "http://localhost:5000",
+});

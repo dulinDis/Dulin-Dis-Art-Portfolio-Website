@@ -1,13 +1,13 @@
 // import { axiosInstance, configs } from "../../config";
 
-import axios from "axios";
+// import axios from "axios";
 import { convertGallery } from "../../utils/gallery-utils";
 import {
   fetchGalleryFailure,
   fetchGalleryRequest,
   fetchGallerySuccess,
 } from "./gallery.actions";
-import { axiosInstance } from "../../axiosConfig";
+import axios from "../../axiosConfig";
 
 export const fetchGalleryAsync = () => async (dispatch) => {
   dispatch(fetchGalleryRequest());

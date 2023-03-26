@@ -1,6 +1,6 @@
 // // import axios from 'axios';
-// import {axiosInstance} from '../config.js';
-import axios from "axios";
+ import axios from '../axiosConfig';
+//import axios from "axios";
 
 export const getCategoryArtworks = (artworks, category) => {
   return artworks[category];
