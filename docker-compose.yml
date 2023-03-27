@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: ./server
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: mern_api
     volumes:
       # don't overwrite this folder in container with the local one
@@ -38,7 +38,7 @@ services:
     restart: always
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: mern_frontend
     environment:
       REACT_APP_API_URL: $${REACT_APP_API_URL}
@@ -58,7 +58,7 @@ services:
       - client
     build:
       context: ./nginx
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
       - 3050:80
     networks:
