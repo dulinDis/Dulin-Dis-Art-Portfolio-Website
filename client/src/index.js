@@ -8,9 +8,6 @@ import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
-//import axios from "axios";
-//axios.defaults.baseURL="http://localhost:5000"
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,21 +17,13 @@ root.render(
         // loading={null}
         persistor={persistor}
       >
-        <BrowserRouter
-          basename=          "/"
-
-          // {axiosInstance.basename || null}
-        >
+        <BrowserRouter basename="/">
           <App />
         </BrowserRouter>
-        {/* <AppFirestore/> */}
       </PersistGate>
     </Provider>
   </React.StrictMode>
-)
-
-
-
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
