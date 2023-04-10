@@ -9,7 +9,6 @@ LABEL description="Development image for the Portfolio api"
 WORKDIR /app
 COPY package.json ./
 
-# COPY yarn.lock ./
 COPY yarn.lock ./
 
 # RUN npm install

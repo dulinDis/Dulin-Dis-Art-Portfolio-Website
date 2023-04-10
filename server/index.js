@@ -12,8 +12,6 @@ const artworkRoutes = require("./routes/artwork-routes");
 const contactRoutes = require("./routes/contact-routes.jsx");
 
 const PORT = process.env.PORT || 5000;
-// const HOST = process.env.HOST  || 127.0.0.1;
-
 const app = express();
 
 app.use(cors());
@@ -43,12 +41,6 @@ app.use(bodyParser.json());
 
 app.use("/api", artworkRoutes.routes);
 app.use("/api", contactRoutes.routes);
-
-//remove api part
-// app.use(artworkRoutes.routes);
-// app.use(contactRoutes.routes);
-
-// app.use(express.static(path.join(__dirname, "..","/client/public")));
 
 if (
   process.env.NODE_ENV === `production` ||
