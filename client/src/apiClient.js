@@ -1,12 +1,12 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 
-const apiClient = () => {
-    const {REACT_APP_API_URL} = process.env;
-    const axiosInstance = axios.create({
-    baseUrl: REACT_APP_API_URL,
-    responseType:'json'
-    });
-    return axiosInstance
-};
-export default apiClient
+// const apiClient = () => {
+//     const {REACT_APP_API_URL} = process.env;
+//     const axiosInstance = axios.create({
+//     baseUrl: REACT_APP_API_URL,
+//     responseType:'json'
+//     });
+//     return axiosInstance
+// };
+// export default apiClient
