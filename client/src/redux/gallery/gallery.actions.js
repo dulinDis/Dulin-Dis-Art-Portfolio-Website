@@ -5,6 +5,7 @@ export const fetchGalleryRequest = () => {
     type: GalleryActionTypes.FETCH_GALLERY_REQUEST,
   };
 };
+
 export const fetchGallerySuccess = (gallery) => {
   return {
     type: GalleryActionTypes.FETCH_GALLERY_SUCCESS,
@@ -19,10 +20,45 @@ export const fetchGalleryFailure = (error) => {
   };
 };
 
-export const setCurrentCategory = (categoryContent) => ({
-  type: GalleryActionTypes.SET_CURRENT_CATEGORY,
-  payload: categoryContent,
-});
+export const fetchCategoryRequest = () => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_REQUEST,
+  };
+};
+
+export const fetchCategorySuccess = (category) => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_SUCCESS,
+    payload: category,
+  };
+};
+
+export const fetchCategoryFailure = (error) => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_FAILURE,
+    payload: error,
+  };
+};
+
+export const fetchArtworkRequest = () => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_REQUEST,
+  };
+};
+
+export const fetchArtworkSuccess = (artwork) => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_SUCCESS,
+    payload: artwork,
+  };
+};
+
+export const fetchArtworkFailure = (error) => {
+  return {
+    type: GalleryActionTypes.FETCH_CATEGORY_FAILURE,
+    payload: error,
+  };
+};
 
 export const resetGallery = () => {
   return {

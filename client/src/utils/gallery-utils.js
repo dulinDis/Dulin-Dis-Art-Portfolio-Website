@@ -10,11 +10,25 @@ export const getCategoryPreview = (artworks, category) => {
   return artworks[category].slice(0, 1)[0];
 };
 
-export const fetchGallery = async () => {
-  const galleryData = await axios.get(`/api/artwork`);
-  const convertedData = convertGallery(galleryData.data);
-  return convertedData;
-};
+// export const fetchGallery = async () => {
+//   const galleryData = await axios.get(`/api/artwork`);
+//   const convertedData = convertGallery(galleryData.data);
+//   return convertedData;
+// };
+
+// export const fetchCategory = async (category) => {
+//   const galleryData = await axios.get(`/api/artwork/${category}`);
+//   const convertedData = convertGallery(galleryData.data);
+//   return convertedData;
+// };
+
+// export const fetchArtwork = async (artwork) => {
+//   const galleryData = await axios.get(`/api/artwork/${artwork.category}/${artwork.id}`);
+//   const convertedData = convertGallery(galleryData.data);
+//   return convertedData;
+// };
+
+
 
 export const convertGallery = (artworks) => {
   const newGallery = {};

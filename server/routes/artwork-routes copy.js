@@ -13,15 +13,9 @@ const router = express.Router();
 router.post("/artwork", addArtwork);
 router.get("/artwork", getAllArtworks);
 router.get("/artwork/:category", getCategoryArtworks);
-router.get("/artwork/:category/:id", getArtwork);
-
-
-
-// router.get("/artwork/:id", getArtwork);
-// router.put("/artwork/:id", updateArtwork);
-// router.delete("/artwork/:id", deleteArtwork);
-
-
+router.get("/artwork/:id", getArtwork);
+router.put("/artwork/:id", updateArtwork);
+router.delete("/artwork/:id", deleteArtwork);
 // router.get('/apitest',function(req,res){
 //     console.log('called api');
 //     res.send({result:"Hi there"})
