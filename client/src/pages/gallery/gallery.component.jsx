@@ -1,12 +1,9 @@
-import React, { Suspense, useEffect } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectAllArtworks } from "../../redux/gallery/gallery.selectors";
-import HelmetMetaData from '../../components/helmet-meta-data/helmet-meta-data';
-import { fetchGalleryAsync } from "../../redux/gallery/gallery-thunks";
+import React, { Suspense, useContext } from "react";
+import HelmetMetaData from "../../components/helmet-meta-data/helmet-meta-data";
 import Loader from "../../components/loader/loader.component";
-import { getCategoryPreview, getCategoryArtworks } from "../../utils/gallery-utils.js";
-import { resetGallery,setCurrentCategory } from "../../redux/gallery/gallery.actions";
+import { getGalleryCategoriesPreview } from "../../utils/gallery-utils.js";
+import DataContext from "../../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
 const CollectionPreviewElement = React.lazy(() =>
   import(
@@ -14,52 +11,40 @@ const CollectionPreviewElement = React.lazy(() =>
   )
 );
 
-const GalleryPage = ({ artworks,fetchGalleryAsync,resetGallery}) => {
-  useEffect(() => {
-    fetchGalleryAsync();
-    return ()=>{
-      // resetGallery();
-    }
-  }, []);
+const GalleryPage = ({ fetchGalleryAsync, resetGallery }) => {
+  const { data, isLoading, error } = useContext(DataContext);
+  const navigate = useNavigate();
+  const collectionPreviewItems = getGalleryCategoriesPreview(data);
 
   return (
-      <div className="gallery">
-        <HelmetMetaData title='Art Gallery - Dulin Dís'></HelmetMetaData>
-        <h2>GALLERY</h2>
-        <Suspense fallback={<Loader/>}>
+    <div className="gallery">
+      <HelmetMetaData title="Art Gallery - Dulin Dís"></HelmetMetaData>
+      <h2>GALLERY</h2>
+      <Suspense fallback={<Loader />}>
         <div className="gallery-container">
-          {artworks ? Object.keys(artworks).map((category, index) => {
-            const  collectionPreviewItem =getCategoryPreview(artworks, category);
-            const currentCategoryArtworks=getCategoryArtworks(artworks,category);
-
-            return (
+          {/* {error ? error.message : ""}
+          {isLoading ? "fetching the data" : ""} */}
+          {collectionPreviewItems.length > 0 ? (
+            collectionPreviewItems.map((previewItem, index) => {
+              return (
                 <CollectionPreviewElement
                   key={index}
-                  category={category}
-                  collectionPreviewItem={collectionPreviewItem}
-                  currentCategoryArtworks={currentCategoryArtworks}
-                  // onClick={()=>{setCurrentCategory({currentCategoryArtworks:currentCategoryArtworks})}}
+                  category={previewItem.category}
+                  collectionPreviewItem={previewItem}
+                  onClick={() => navigate(`/gallery/${previewItem.category}`)}
+                  // onClick={(category) => {
+                  //   handleClick(category);
+                  // }}
                 />
-              
-            );
-          }) : 'nothing to display'
-          
-          }
+              );
+            })
+          ) : (
+            <div>nothing to display</div>
+          )}
         </div>
-        </Suspense>
-
-      </div>
+      </Suspense>
+    </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  artworks: selectAllArtworks,
-});
-
-const mapDispatchToProps = (dispatch,categoryData)=>({
-  fetchGalleryAsync:()=>dispatch(fetchGalleryAsync()),
-  setCurrentCategory:()=>dispatch(setCurrentCategory(categoryData)),
-  resetGallery:()=>dispatch(resetGallery())
-})
-
-export default connect(mapStateToProps,mapDispatchToProps)(GalleryPage);
+export default GalleryPage;

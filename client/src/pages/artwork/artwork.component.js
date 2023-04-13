@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import React, { useContext, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-// import { createStructuredSelector } from "reselect";
-
-import {
-  selectCurrentCategory,
-  selectArtwork,
-} from "../../redux/gallery/gallery.selectors";
 import Button from "../../components/button/button.component";
 import ArtworkModal from "../../components/modal/modal.component";
 import HelmetMetaData from "../../components/helmet-meta-data/helmet-meta-data";
+import DataContext from "../../context/DataContext";
+import { getArtworkById } from "../../utils/gallery-utils";
+import PageLoader from "../../components/page-loader/page-loader.component";
 
-function ArtworkComponent({ artwork, currentCategory }) {
-  const [currentArtwork, setCurrentArtwork] = useState([]);
-  const { title, url, technique, size, description } = currentArtwork;
-  const { artworkId } = useParams();
+function ArtworkComponent() {
+  const { data, isLoading, error } = useContext(DataContext);
+  const { category, artworkId } = useParams();
+  // console.log("data[category]", data[category]);
+  console.log("data", data);
+  console.log("isLoading", isLoading);
+  console.log("error", error);
+  const currentArtwork = getArtworkById(data[category], artworkId) || null;
+  console.log("currentArtwork", currentArtwork);
+  // const { title, url, technique, size, description } = currentArtwork;
 
   const [wideClass, setWideClass] = useState(false);
 
   let navigate = useNavigate();
   let { pathname } = useLocation();
-
-  useEffect(() => {
-    const currArtwork = artwork(artworkId);
-    setCurrentArtwork(currArtwork);
-  }, [artworkId]);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
@@ -43,61 +40,64 @@ function ArtworkComponent({ artwork, currentCategory }) {
 
   return (
     <div className="artwork-page">
-      <HelmetMetaData
+      {isLoading ? "loader" : error ? "error" : "artwork"}
+      {/* <HelmetMetaData
         title={`${title} - Dulin Dís`}
         currentUrl={pathname}
         imageUrl={url}
-      ></HelmetMetaData>
-      <div className="artwork-container">
-        <div className="artwork-image" onClick={toggleModal}>
-          <img
-            crossOrigin={`anonymous`}
-            onLoad={onImgLoad}
-            className={`${wideClass ? "wide" : ""}`}
-            src={url}
-            alt={title}
-          />
-        </div>
-
-        <div className="artwork-description">
-          <h3 className="artwork-title">"{title}"</h3>
-          <p className="artwork-parameter">{size}</p>
-          <p className="artwork-parameter">{technique}</p>
-          <p className={`artwork-parameter description`}>{description}</p>
-        </div>
-        <Button
-          className="button"
-          btnColor="rgb(95, 93, 90)"
-          labelColor="rgb(240, 240, 240)"
-          theme="commonStyles"
-          onClick={() => {
-            navigate(`${getCurrentPathWithoutLastPart()}`);
-          }}
-        >
-          {" "}
-          back to {currentCategory.category}
-        </Button>
-      </div>
-      {/* < Modal/> */}
-      <ArtworkModal
-        showModal={showModal}
-        className={`${wideClass ? "wide" : ""}`}
-        toggleModal={toggleModal}
-        src={url}
-        alt={title}
-      />
+      ></HelmetMetaData> */}
     </div>
   );
 }
 
-// const mapStateToProps = createStructuredSelector({
-//   currentCategory: selectCurrentCategory,
-//   artwork: (id) => selectArtwork(id)
-// })
+export default ArtworkComponent;
 
-const mapStateToProps = (state) => ({
-  currentCategory: selectCurrentCategory(state),
-  artwork: (id) => selectArtwork(id)(state),
-});
+// {error ? (
+//   error.message
+// ) : isLoading ? (
+//   <PageLoader />
+// ) :
+// }
 
-export default connect(mapStateToProps)(ArtworkComponent);
+// (
+//   <React.Fragment>
+//     <div className="artwork-container">
+//       <div className="artwork-image" onClick={toggleModal}>
+//         <img
+//           crossOrigin={`anonymous`}
+//           onLoad={onImgLoad}
+//           className={`${wideClass ? "wide" : ""}`}
+//           src={url}
+//           alt={title}
+//         />
+//       </div>
+
+//       <div className="artwork-description">
+//         <h3 className="artwork-title">"{title}"</h3>
+//         <p className="artwork-parameter">{size}</p>
+//         <p className="artwork-parameter">{technique}</p>
+//         <p className={`artwork-parameter description`}>{description}</p>
+//       </div>
+//       <Button
+//         className="button"
+//         btnColor="rgb(95, 93, 90)"
+//         labelColor="rgb(240, 240, 240)"
+//         theme="commonStyles"
+//         onClick={() => {
+//           navigate(`${getCurrentPathWithoutLastPart()}`);
+//         }}
+//       >
+//         {" "}
+//         back to {category}
+//       </Button>
+//     </div>
+//     {/* < Modal/> */}
+//     <ArtworkModal
+//       showModal={showModal}
+//       className={`${wideClass ? "wide" : ""}`}
+//       toggleModal={toggleModal}
+//       src={url}
+//       alt={title}
+//     />
+//   </React.Fragment>
+// )

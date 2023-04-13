@@ -21,43 +21,52 @@ const ArtworkComponent = lazy(() =>
   import("./pages/artwork/artwork.component")
 );
 
+import useFetchData from "./context/useFetchData";
+import DataContext from "./context/DataContext";
+import DataProvider from "./context/DataProvider";
+
 function App() {
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setLoading(false), 3000);
   }, []);
 
+  const data = useFetchData("/api/artwork");
   return (
-    <div className="App">
-      <HelmetMetaData></HelmetMetaData>
-      <Header />
-      <div className="wrapper">
-        <ErrorBoundary>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-              <Route exact path="/" element={<HomePage />} />
-              <Route path="about" element={<AboutPage />} />
-              <Route path="contact" element={<ContactPage />} />
-              <Route exact path="gallery" element={<GalleryPage />} />
-              <Route
-                exact
-                path="gallery/:category"
-                element={<CollectionOverview />}
-              />
-              <Route
-                exact
-                path="gallery/:category/:artworkId"
-                element={<ArtworkComponent />}
-              />
-            </Routes>
-          </Suspense>
-        </ErrorBoundary>
+    // <DataContext.Provider value={{ artworks: data }}>
+    <DataProvider>
+      <div className="App">
+        <HelmetMetaData></HelmetMetaData>
+        <Header />
+        <div className="wrapper">
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route exact path="/" element={<HomePage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="contact" element={<ContactPage />} />
+                <Route exact path="gallery" element={<GalleryPage />} />
+                <Route
+                  exact
+                  path="gallery/:category"
+                  element={<CollectionOverview />}
+                />
+                <Route
+                  exact
+                  path="gallery/:category/:artworkId"
+                  element={<ArtworkComponent />}
+                />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </div>
+        <Footer />
+        {loading === false ? null : <PageLoader />}
       </div>
-      <Footer />
-      {loading === false ? null : <PageLoader />}
-    </div>
+    </DataProvider>
+    // </DataContext.Provider>
   );
 }
 

@@ -3,3 +3,7 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
+.collection-overview {
+  overflow-y: scroll;
+}
