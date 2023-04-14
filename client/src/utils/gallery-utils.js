@@ -1,28 +1,40 @@
 export const getCategoryArtworks = (artworks, category) => {
-  return artworks[category];
+  if (artworks && category) {
+    return artworks[category];
+  } else {
+    return [];
+  }
 };
 
-export const getCategoryPreview = (categoryArtworks, category) => {
-  return categoryArtworks[category].slice(0, 1)[0];
+export const getCategoryPreview = (artworks, category) => {
+  if (artworks && category) {
+    return artworks[category].slice(0, 1)[0];
+  } else {
+    return [];
+  }
 };
 
 export const getGalleryCategoriesPreview = (artworks) => {
-  const galleryCategoriesPreview = [];
-  Object.keys(artworks).map((category, index) => {
-    galleryCategoriesPreview.push(getCategoryPreview(artworks, category));
-  });
-  return galleryCategoriesPreview;
+  if (artworks) {
+    const galleryCategoriesPreview = [];
+    Object.keys(artworks).map((category, index) => {
+      galleryCategoriesPreview.push(getCategoryPreview(artworks, category));
+    });
+    return galleryCategoriesPreview;
+  } else {
+    return [];
+  }
 };
 
-export const getArtworkById = (artworks, id) => {
-  const artwork = artworks.find((artwork) => artwork.id == id);
-  console.log("artwork", artwork);
-  return artwork;
+export const getArtworkById = (artworks, category, id) => {
+  if (artworks && id) {
+    const artwork = artworks[category].find((artwork) => artwork.id == id);
+    return artwork;
+  } else {
+    return {};
+  }
 };
 
-// export const getCategoryArtworks = (artworks, category) => {
-//   const categoryArworks = artworks[category];
-// };
 export const convertGallery = (artworks) => {
   const newGallery = {};
   const categories = [...new Set(artworks.map((artwork) => artwork.category))];

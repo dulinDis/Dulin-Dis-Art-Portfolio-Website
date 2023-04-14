@@ -1,70 +1,71 @@
 .artwork-page {
-    @include page-basic-setup; 
+  @include page-basic-setup;
 }
 
 .artwork-container {
-    @include flex-column;
-    align-items: center
+  @include flex-column;
+  align-items: center;
 }
 
 .artwork-image {
-    max-width: 25vw;
-    margin-top: 25px;
+  max-width: 25vw;
+  margin-top: 25px;
 
-    @include breakpoint(xxl,max) {
-        max-width:35vw;
-        margin-top: 20px;
-    }
-    @include breakpoint(xl,max) {
-        max-width:55vw;
-        margin-top: 15px;
-    }
+  @include breakpoint(xxl, max) {
+    max-width: 35vw;
+    margin-top: 20px;
+  }
+  @include breakpoint(xl, max) {
+    max-width: 55vw;
+    margin-top: 15px;
+  }
 
-    @include breakpoint(lg,max) {
-        max-width:65vw;
-    }
-    @include breakpoint(md,max) {
-        max-width:85vw;
-    }
+  @include breakpoint(lg, max) {
+    max-width: 65vw;
+  }
+  @include breakpoint(md, max) {
+    max-width: 85vw;
+  }
 
-    img {
-        width:100%;
-        display: block;
-    }
+  img {
+    width: 100%;
+    display: block;
+  }
 }
 
 .artwork-description {
-    padding: 20px 0 40px;
-    width:47vw;
+  padding: 20px 0 40px;
+  width: 47vw;
 
   > * {
-      padding-bottom: 20px
+    padding-bottom: 20px;
   }
 
-  @include breakpoint(xxl,max) {
-    width:55vw;
+  @include breakpoint(xxl, max) {
+    width: 55vw;
+  }
+
+  @include breakpoint(xl, max) {
+    width: 65vw;
+  }
+
+  @include breakpoint(lg, max) {
+    width: 75vw;
+  }
+  @include breakpoint(md, max) {
+    max-width: 85vw;
+  }
+
+  h5 {
+    text-transform: lowercase;
+  }
+  p {
+    @include breakpoint(lg, max) {
+      font-size: 22px;
     }
 
-    @include breakpoint(xl,max) {
-        width:65vw;
+    @include breakpoint(md, max) {
+      font-size: 20px;
     }
-
-    @include breakpoint(lg,max) {
-        width:75vw;
-    }
-    @include breakpoint(md,max) {
-        max-width:85vw;
-    }
-
-    p {
-
-        @include breakpoint(lg,max) {
-            font-size:22px ;
-        }
-
-        @include breakpoint(md, max) {
-            font-size: 20px;
-        }
-
-    }
+  }
 }

@@ -21,8 +21,6 @@ const ArtworkComponent = lazy(() =>
   import("./pages/artwork/artwork.component")
 );
 
-import useFetchData from "./context/useFetchData";
-import DataContext from "./context/DataContext";
 import DataProvider from "./context/DataProvider";
 
 function App() {
@@ -33,9 +31,7 @@ function App() {
     setTimeout(() => setLoading(false), 3000);
   }, []);
 
-  const data = useFetchData("/api/artwork");
   return (
-    // <DataContext.Provider value={{ artworks: data }}>
     <DataProvider>
       <div className="App">
         <HelmetMetaData></HelmetMetaData>
@@ -66,7 +62,6 @@ function App() {
         {loading === false ? null : <PageLoader />}
       </div>
     </DataProvider>
-    // </DataContext.Provider>
   );
 }
 

@@ -1,8 +1,13 @@
-import useFetchData from "./useFetchData";
+import React, { useReducer } from "react";
+
+import useFetchData from "../customHooks/useFetchData";
 import DataContext from "./DataContext";
+import { initialState, reducer } from "../reducer/galleryReducer";
 
 const DataProvider = ({ children }) => {
-  const { data, isLoading, error } = useFetchData("/api/artwork");
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { data, isLoading, error } = state;
+  useFetchData("/api/artwork", dispatch);
   return (
     <DataContext.Provider value={{ data, isLoading, error }}>
       {children}

@@ -15,7 +15,6 @@ const CollectionOverview = () => {
   const { data, isLoading, error } = useContext(DataContext);
   const { category } = useParams();
 
-
   const categoryArtworks = getCategoryArtworks(data, category);
 
   let navigate = useNavigate();

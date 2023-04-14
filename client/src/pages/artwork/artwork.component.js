@@ -10,13 +10,8 @@ import PageLoader from "../../components/page-loader/page-loader.component";
 function ArtworkComponent() {
   const { data, isLoading, error } = useContext(DataContext);
   const { category, artworkId } = useParams();
-  // console.log("data[category]", data[category]);
-  console.log("data", data);
-  console.log("isLoading", isLoading);
-  console.log("error", error);
-  const currentArtwork = getArtworkById(data[category], artworkId) || null;
-  console.log("currentArtwork", currentArtwork);
-  // const { title, url, technique, size, description } = currentArtwork;
+  const currentArtwork = getArtworkById(data, category, artworkId) || {};
+  const { title, url, technique, size, description } = currentArtwork;
 
   const [wideClass, setWideClass] = useState(false);
 
@@ -40,64 +35,65 @@ function ArtworkComponent() {
 
   return (
     <div className="artwork-page">
-      {isLoading ? "loader" : error ? "error" : "artwork"}
-      {/* <HelmetMetaData
+      <HelmetMetaData
         title={`${title} - Dulin Dís`}
         currentUrl={pathname}
         imageUrl={url}
-      ></HelmetMetaData> */}
+      ></HelmetMetaData>
+      {isLoading ? (
+        <PageLoader />
+      ) : error ? (
+        error.message
+      ) : Object.keys(currentArtwork).length !== 0 ? (
+        <React.Fragment>
+          <HelmetMetaData
+            title={`${title} - Dulin Dís`}
+            currentUrl={pathname}
+            imageUrl={url}
+          ></HelmetMetaData>
+          <div className="artwork-container">
+            <div className="artwork-image" onClick={toggleModal}>
+              <img
+                crossOrigin={`anonymous`}
+                onLoad={onImgLoad}
+                className={`${wideClass ? "wide" : ""}`}
+                src={url}
+                alt={title}
+              />
+            </div>
+
+            <div className="artwork-description">
+              <h3 className="artwork-title">"{title}"</h3>
+              <h4 className="artwork-parameter">{size}</h4>
+              <h5 className="artwork-parameter">{technique}</h5>
+              <p className={`artwork-parameter description`}>{description}</p>
+            </div>
+            <Button
+              className="button"
+              btnColor="rgb(95, 93, 90)"
+              labelColor="rgb(240, 240, 240)"
+              theme="commonStyles"
+              onClick={() => {
+                navigate(`${getCurrentPathWithoutLastPart()}`);
+              }}
+            >
+              {" "}
+              back to {category}
+            </Button>
+          </div>
+          <ArtworkModal
+            showModal={showModal}
+            className={`${wideClass ? "wide" : ""}`}
+            toggleModal={toggleModal}
+            src={url}
+            alt={title}
+          />
+        </React.Fragment>
+      ) : (
+        "artwork with this id doesnt exist"
+      )}
     </div>
   );
 }
 
 export default ArtworkComponent;
-
-// {error ? (
-//   error.message
-// ) : isLoading ? (
-//   <PageLoader />
-// ) :
-// }
-
-// (
-//   <React.Fragment>
-//     <div className="artwork-container">
-//       <div className="artwork-image" onClick={toggleModal}>
-//         <img
-//           crossOrigin={`anonymous`}
-//           onLoad={onImgLoad}
-//           className={`${wideClass ? "wide" : ""}`}
-//           src={url}
-//           alt={title}
-//         />
-//       </div>
-
-//       <div className="artwork-description">
-//         <h3 className="artwork-title">"{title}"</h3>
-//         <p className="artwork-parameter">{size}</p>
-//         <p className="artwork-parameter">{technique}</p>
-//         <p className={`artwork-parameter description`}>{description}</p>
-//       </div>
-//       <Button
-//         className="button"
-//         btnColor="rgb(95, 93, 90)"
-//         labelColor="rgb(240, 240, 240)"
-//         theme="commonStyles"
-//         onClick={() => {
-//           navigate(`${getCurrentPathWithoutLastPart()}`);
-//         }}
-//       >
-//         {" "}
-//         back to {category}
-//       </Button>
-//     </div>
-//     {/* < Modal/> */}
-//     <ArtworkModal
-//       showModal={showModal}
-//       className={`${wideClass ? "wide" : ""}`}
-//       toggleModal={toggleModal}
-//       src={url}
-//       alt={title}
-//     />
-//   </React.Fragment>
-// )
