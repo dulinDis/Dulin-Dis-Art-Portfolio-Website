@@ -90,7 +90,7 @@ function ArtworkComponent() {
           />
         </React.Fragment>
       ) : (
-        "artwork with this id doesnt exist"
+        "Artwork with this id doesnt exist."
       )}
     </div>
   );

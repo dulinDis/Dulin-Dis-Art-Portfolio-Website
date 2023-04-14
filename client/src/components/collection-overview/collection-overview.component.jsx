@@ -23,24 +23,29 @@ const CollectionOverview = () => {
     <div className="collection-overview">
       <h2 className="medium-title">{category}</h2>
       {error ? (
-        error.message
+        "Something went wrong. Please try again later."
       ) : isLoading ? (
         <PageLoader />
       ) : (
         <React.Fragment>
-          <Masonry
-            breakpointCols={generateBreakPoints(categoryArtworks.length)}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {categoryArtworks.map((artwork, index) => (
-              <ArtworkPreviewElement
-                key={index}
-                artwork={artwork}
-                category={category}
-              />
-            ))}
-          </Masonry>
+          {categoryArtworks.length > 0 ? (
+            <Masonry
+              breakpointCols={generateBreakPoints(categoryArtworks.length)}
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid_column"
+            >
+              {categoryArtworks.map((artwork, index) => (
+                <ArtworkPreviewElement
+                  key={index}
+                  artwork={artwork}
+                  category={category}
+                />
+              ))}
+            </Masonry>
+          ) : (
+            "No data."
+          )}
+
           <Button
             className="button"
             btnColor="rgb(95, 93, 90)"

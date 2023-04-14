@@ -4,13 +4,13 @@ import { convertGallery } from "../utils/gallery-utils";
 
 const useFetchData = (route, dispatch) => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
-
     const fetchData = async () => {
+      // setIsLoading(true);
+
       try {
         const { data } = await axios.get(route);
         const convertedData = convertGallery(data);

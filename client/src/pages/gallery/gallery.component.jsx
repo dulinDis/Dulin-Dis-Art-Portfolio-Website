@@ -15,7 +15,6 @@ const GalleryPage = () => {
   const { data, isLoading, error } = useContext(DataContext);
   const navigate = useNavigate();
   const collectionPreviewItems = getGalleryCategoriesPreview(data);
-  console.log("collectionPreviewItems", collectionPreviewItems);
 
   return (
     <div className="gallery">
@@ -24,27 +23,21 @@ const GalleryPage = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        "error"
+        "Something went wrong. Please try again later."
       ) : (
         <div className="gallery-container">
-          {isLoading ? (
-            "loading"
-          ) : error ? (
-            "error"
-          ) : collectionPreviewItems.length > 0 ? (
-            collectionPreviewItems.map((previewItem, index) => {
-              return (
-                <CollectionPreviewElement
-                  key={index}
-                  category={previewItem.category}
-                  collectionPreviewItem={previewItem}
-                  onClick={() => navigate(`/gallery/${previewItem.category}`)}
-                />
-              );
-            })
-          ) : (
-            <p>No items to display</p>
-          )}
+          {collectionPreviewItems.length > 0
+            ? collectionPreviewItems.map((previewItem, index) => {
+                return (
+                  <CollectionPreviewElement
+                    key={index}
+                    category={previewItem.category}
+                    collectionPreviewItem={previewItem}
+                    onClick={() => navigate(`/gallery/${previewItem.category}`)}
+                  />
+                );
+              })
+            : "No data."}
         </div>
       )}
     </div>
