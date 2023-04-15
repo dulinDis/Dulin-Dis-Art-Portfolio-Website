@@ -8,7 +8,7 @@ import GalleryContainerComponent from "../../components/gallery-container/galler
 const GalleryPage = () => {
   const { data, isLoading, error } = useContext(DataContext);
   const collectionPreviewItems = getGalleryCategoriesPreview(data);
-  console.log("gallery: data, isLoading, error ", data, isLoading, error);
+  // console.log("gallery: data, isLoading, error ", data, isLoading, error);
 
   return (
     <div className="gallery">

@@ -9,7 +9,7 @@ const DataProvider = ({ children }) => {
   const { data, isLoading, error } = state;
   useFetchData("/api/artwork", dispatch);
   return (
-    <DataContext.Provider value={{ data, isLoading, error }}>
+    <DataContext.Provider value={{ data, isLoading, error, dispatch }}>
       {children}
     </DataContext.Provider>
   );

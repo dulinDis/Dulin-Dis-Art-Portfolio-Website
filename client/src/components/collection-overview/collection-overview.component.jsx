@@ -7,15 +7,19 @@ import DataContext from "../../context/DataContext";
 import { getCategoryArtworks } from "../../utils/gallery-utils";
 import PageLoader from "../page-loader/page-loader.component";
 import Loader from "../loader/loader.component";
+import useFetchData from "../../customHooks/useFetchData";
 
 const ArtworkPreviewElement = React.lazy(() =>
   import("../artwork-preview-element/artwork-preview-element.component")
 );
 
 const CollectionOverview = () => {
-  const { data, isLoading, error } = useContext(DataContext);
+  const { data, isLoading, error,dispatch } = useContext(DataContext);
   const { category } = useParams();
-  console.log("overview: data, isLoading, error ", data, isLoading, error);
+  useFetchData("/api/artwork", dispatch);
+
+  // console.log("overview: data, isLoading, error ", data, isLoading, error);
+
 
   const categoryArtworks = getCategoryArtworks(data, category);
 
