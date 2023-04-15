@@ -1,5 +1,4 @@
 import { CgInstagram } from "react-icons/cg";
-import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer>

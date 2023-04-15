@@ -14,6 +14,7 @@ import HomePage from "./pages/homepage/homepage.component";
 const AboutPage = lazy(() => import("./pages/about/about.component.jsx"));
 const ContactPage = lazy(() => import("./pages/contact/contact.component"));
 const GalleryPage = lazy(() => import("./pages/gallery/gallery.component"));
+
 const CollectionOverview = lazy(() =>
   import("./components/collection-overview/collection-overview.component")
 );
