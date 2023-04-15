@@ -38,26 +38,22 @@ function App() {
         <HelmetMetaData></HelmetMetaData>
         <Header />
         <div className="wrapper">
-          <ErrorBoundary>
-            <Suspense fallback={<Loader />}>
-              <Routes>
-                <Route exact path="/" element={<HomePage />} />
-                <Route path="about" element={<AboutPage />} />
-                <Route path="contact" element={<ContactPage />} />
-                <Route exact path="gallery" element={<GalleryPage />} />
-                <Route
-                  exact
-                  path="gallery/:category"
-                  element={<CollectionOverview />}
-                />
-                <Route
-                  exact
-                  path="gallery/:category/:artworkId"
-                  element={<ArtworkComponent />}
-                />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route exact path="gallery" element={<GalleryPage />} />
+            <Route
+              exact
+              path="gallery/:category"
+              element={<CollectionOverview />}
+            />
+            <Route
+              exact
+              path="gallery/:category/:artworkId"
+              element={<ArtworkComponent />}
+            />
+          </Routes>
         </div>
         <Footer />
         {loading === false ? null : <PageLoader />}
