@@ -14,7 +14,6 @@ import HomePage from "./pages/homepage/homepage.component";
 const AboutPage = lazy(() => import("./pages/about/about.component.jsx"));
 const ContactPage = lazy(() => import("./pages/contact/contact.component"));
 const GalleryPage = lazy(() => import("./pages/gallery/gallery.component"));
-
 const CollectionOverview = lazy(() =>
   import("./components/collection-overview/collection-overview.component")
 );
@@ -38,22 +37,26 @@ function App() {
         <HelmetMetaData></HelmetMetaData>
         <Header />
         <div className="wrapper">
-          <Routes>
-            <Route exact path="/" element={<HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route exact path="gallery" element={<GalleryPage />} />
-            <Route
-              exact
-              path="gallery/:category"
-              element={<CollectionOverview />}
-            />
-            <Route
-              exact
-              path="gallery/:category/:artworkId"
-              element={<ArtworkComponent />}
-            />
-          </Routes>
+          <ErrorBoundary>
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route exact path="/" element={<HomePage />} />
+                <Route path="about" element={<AboutPage />} />
+                <Route path="contact" element={<ContactPage />} />
+                <Route exact path="gallery" element={<GalleryPage />} />
+                <Route
+                  exact
+                  path="gallery/:category"
+                  element={<CollectionOverview />}
+                />
+                <Route
+                  exact
+                  path="gallery/:category/:artworkId"
+                  element={<ArtworkComponent />}
+                />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
         </div>
         <Footer />
         {loading === false ? null : <PageLoader />}
