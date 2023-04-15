@@ -7,9 +7,9 @@ const Footer = () => (
       <p className="copyright">Copyright &#169; dulin dís 2022</p>
       <div className="socials">
         <div className="social-icon">
-          <Link to="https://www.instagram.com/dulin_dis/">
+          <a href="https://www.instagram.com/dulin_dis/">
             <CgInstagram className="instagram" />
-          </Link>
+          </a>
         </div>
       </div>
     </div>
