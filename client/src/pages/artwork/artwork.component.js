@@ -10,6 +10,8 @@ import Loader from "../../components/loader/loader.component";
 
 function ArtworkComponent() {
   const { data, isLoading, error } = useContext(DataContext);
+  console.log("artwork: data, isLoading, error ", data, isLoading, error);
+
   const { category, artworkId } = useParams();
   const currentArtwork = getArtworkById(data, category, artworkId) || {};
   const { title, url, technique, size, description } = currentArtwork;

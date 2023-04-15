@@ -15,6 +15,7 @@ const ArtworkPreviewElement = React.lazy(() =>
 const CollectionOverview = () => {
   const { data, isLoading, error } = useContext(DataContext);
   const { category } = useParams();
+  console.log("overview: data, isLoading, error ", data, isLoading, error);
 
   const categoryArtworks = getCategoryArtworks(data, category);
 
