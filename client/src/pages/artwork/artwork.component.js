@@ -6,6 +6,7 @@ import HelmetMetaData from "../../components/helmet-meta-data/helmet-meta-data";
 import DataContext from "../../context/DataContext";
 import { getArtworkById } from "../../utils/gallery-utils";
 import PageLoader from "../../components/page-loader/page-loader.component";
+import Loader from "../../components/loader/loader.component";
 
 function ArtworkComponent() {
   const { data, isLoading, error } = useContext(DataContext);
@@ -40,11 +41,14 @@ function ArtworkComponent() {
         currentUrl={pathname}
         imageUrl={url}
       ></HelmetMetaData>
+
       {isLoading ? (
-        <PageLoader />
+        <Loader />
       ) : error ? (
-        error.message
-      ) : Object.keys(currentArtwork).length !== 0 ? (
+        "Something went wrong. Please try again later."
+      ) : Object.keys(currentArtwork).length === 0 ? (
+        "Artwork with this id doesnt exist."
+      ) : (
         <React.Fragment>
           <HelmetMetaData
             title={`${title} - Dulin Dís`}
@@ -89,8 +93,6 @@ function ArtworkComponent() {
             alt={title}
           />
         </React.Fragment>
-      ) : (
-        "Artwork with this id doesnt exist."
       )}
     </div>
   );
