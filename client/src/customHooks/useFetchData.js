@@ -9,14 +9,14 @@ const useFetchData = (route, dispatch) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // setIsLoading(true);
+      dispatch({ type: "FETCH_INIT" });
 
       try {
         const { data } = await axios.get(route);
         const convertedData = convertGallery(data);
 
         setData(convertedData);
-        setIsLoading(false);
+        // setIsLoading(false);
 
         dispatch({ type: "FETCH_SUCCESS", payload: convertedData });
         setIsLoading(false);

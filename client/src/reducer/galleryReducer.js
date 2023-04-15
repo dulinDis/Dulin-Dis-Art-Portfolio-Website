@@ -1,6 +1,6 @@
 export const initialState = {
   data: null,
-  isLoading: true,
+  isLoading: false,
   error: null,
 };
 

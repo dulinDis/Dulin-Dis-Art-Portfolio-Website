@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const DataContext = createContext({
   data: [],
-  isLoading: true,
+  isLoading: false,
   error: null,
 });
 
