@@ -7,7 +7,6 @@ import { initialState, reducer } from "../reducer/galleryReducer";
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { data, isLoading, error } = state;
-  console.log("state:", state);
   useFetchData("/api/artwork", dispatch);
   return (
     <DataContext.Provider value={{ data, isLoading, error }}>
