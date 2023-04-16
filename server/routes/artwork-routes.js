@@ -22,10 +22,6 @@ router.get("/artwork/:category/:id", getArtwork);
 // router.delete("/artwork/:id", deleteArtwork);
 
 
-// router.get('/apitest',function(req,res){
-//     console.log('called api');
-//     res.send({result:"Hi there"})
-// });
 router.get("/quit", function (req, res) {
   console.log("called quit");
   res.send({ result: "Goodbye" });

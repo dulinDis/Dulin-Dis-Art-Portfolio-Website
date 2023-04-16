@@ -1,11 +1,15 @@
 footer {
   height: 6vh;
-  z-index:6;
+  z-index: 6;
   @include flex-column;
   justify-content: space-between;
 
   background-color: $backgroud-color-footer;
   color: $background-color;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   a {
     color: $background-color;
   }

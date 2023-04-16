@@ -7,12 +7,11 @@ import DataContext from "../../context/DataContext";
 import { getArtworkById } from "../../utils/gallery-utils";
 import PageLoader from "../../components/page-loader/page-loader.component";
 import Loader from "../../components/loader/loader.component";
-import useFetchData from "../../customHooks/useFetchData";
+// import useFetchData from "../../customHooks/useFetchData";
 
 function ArtworkComponent() {
   const { data, isLoading, error, dispatch } = useContext(DataContext);
-  // console.log("artwork: data, isLoading, error ", data, isLoading, error);
-  useFetchData("/api/artwork", dispatch);
+  // useFetchData("/api/artwork", dispatch);
 
   const { category, artworkId } = useParams();
   const currentArtwork = getArtworkById(data, category, artworkId) || {};
