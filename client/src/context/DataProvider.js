@@ -4,6 +4,8 @@ import useFetchData from "../customHooks/useFetchData";
 import DataContext from "./DataContext";
 import { initialState, reducer } from "../reducer/galleryReducer";
 
+
+
 const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { data, isLoading, error } = state;

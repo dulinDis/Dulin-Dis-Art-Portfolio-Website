@@ -46,10 +46,10 @@ function ArtworkComponent() {
         imageUrl={url}
       ></HelmetMetaData>
 
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
+      {error ? (
         "Something went wrong. Please try again later."
+      ) : isLoading ? (
+        <Loader />
       ) : Object.keys(currentArtwork).length === 0 ? (
         "Artwork with this id doesnt exist."
       ) : (

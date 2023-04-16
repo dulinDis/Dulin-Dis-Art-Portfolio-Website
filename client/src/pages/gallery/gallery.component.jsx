@@ -8,16 +8,16 @@ import GalleryContainerComponent from "../../components/gallery-container/galler
 const GalleryPage = () => {
   const { data, isLoading, error } = useContext(DataContext);
   const collectionPreviewItems = getGalleryCategoriesPreview(data);
-  // console.log("gallery: data, isLoading, error ", data, isLoading, error);
+  console.log("gallery: data, isLoading, error ", data, isLoading, error);
 
   return (
     <div className="gallery">
       <HelmetMetaData title="Art Gallery - Dulin Dís"></HelmetMetaData>
       <h2>GALLERY</h2>
-      {isLoading ? (
-        <Loader />
-      ) : error ? (
+      {error ? (
         "Something went wrong. Please try again later."
+      ) : isLoading ? (
+        <Loader />
       ) : collectionPreviewItems.length === 0 ? (
         "No data to show."
       ) : (
