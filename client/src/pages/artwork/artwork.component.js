@@ -10,9 +10,7 @@ import Loader from "../../components/loader/loader.component";
 // import useFetchData from "../../customHooks/useFetchData";
 
 function ArtworkComponent() {
-  const { data, isLoading, error, dispatch } = useContext(DataContext);
-  // useFetchData("/api/artwork", dispatch);
-
+  const { data, isLoading, error } = useContext(DataContext);
   const { category, artworkId } = useParams();
   const currentArtwork = getArtworkById(data, category, artworkId) || {};
   const { title, url, technique, size, description } = currentArtwork;
