@@ -7,9 +7,9 @@ const helmet = require("helmet");
 const path = require("path");
 const compression = require("compression");
 require("dotenv").config();
+const mime = require("mime");
 
-
-const mime = require('mime');
+const mime = require("mime");
 
 const artworkRoutes = require("./routes/artwork-routes");
 const contactRoutes = require("./routes/contact-routes.jsx");
@@ -60,10 +60,25 @@ app.use("/api", contactRoutes.routes);
 // }
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "build")));
+  app.use(
+    express.static(path.join(__dirname, "build"), {
+      setHeaders: function (res, path) {
+        if (mime.getType(path) === "text/html") {
+          // Set MIME type for HTML files
+          res.setHeader("Content-Type", "text/html");
+        } else if (mime.getType(path) === "application/javascript") {
+          // Set MIME type for JS files
+          res.setHeader("Content-Type", "application/javascript");
+        } else if (mime.getType(path) === "text/css") {
+          // Set MIME type for CSS files
+          res.setHeader("Content-Type", "text/css");
+        }
+      },
+    })
+  );
   app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "build", "index.html"));
-  });
+  }); //for client side rendering
 }
 
 app.listen(PORT, () => console.log(`App is listening on port: ${PORT}`));
