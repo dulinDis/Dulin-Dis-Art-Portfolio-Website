@@ -8,6 +8,9 @@ const path = require("path");
 const compression = require("compression");
 require("dotenv").config();
 
+
+const mime = require('mime');
+
 const artworkRoutes = require("./routes/artwork-routes");
 const contactRoutes = require("./routes/contact-routes.jsx");
 
