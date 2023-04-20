@@ -1,0 +1,8 @@
+{
+  "short_name": "Porfolio in React",
+  "name": "Dulin Dis art portfolio.",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#F0F0F0",
+  "background_color": "#F0F0F0"
+}
